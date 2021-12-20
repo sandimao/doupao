@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="DouPHP,轻量级企业网站管理系统" />
+<meta name="description" content="DouPHP,轻量级企业网站管理系统" />
+<meta name="generator" content="DouPHP v1.6" />
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="/static/home/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/static/home/css/swiper.min.css" rel="stylesheet" type="text/css" />
+<link href="/static/home/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="/static/home/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <header id="header">
+    <nav class="navbar navbar-expand-sm custom_nav">
+     <div class="container">
+      <div class="navbar-brand">
+       <a href="{:url('/index/index/index')}" class="logo"><img src="/static/home/images/logo.png" alt="DouPHP轻量级企业网站管理系统" /></a>
+      </div>
+      <div class="navbar-action d-md-none">
+           <button type="button" class="menu" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation"> <span class="fa fa-bars"></span> </button>
+      </div>
+      <div class="main-nav collapse navbar-collapse justify-content-md-end" id="main-nav">
+       <ul class="navbar-nav">
+        {foreach $nav as $v}
+             <li class="nav-item dropdown"> <a href="{:url('/index/index/'.$v['nav_url'])}" class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{$v.nav_name}</a>
+              {present name="$v['son']"}
+               <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                 {foreach $v['son'] as $k}
+                 <li> 
+                   <a class="dropdown-item" href="{:url('/index/index/'.$k['nav_url'])}">{$k.nav_name}</a>
+                  </li>
+                  {/foreach}
+                </ul>
+               {/present}
+              </li>
+         {/foreach}
+            </ul>
+      </div>
+     </div>
+    </nav>
+   </header>
+ <div class="swiper-container slide-show">
+ <div class="swiper-wrapper">
+   {foreach $banner as $v}
+    <div class="swiper-slide"><a href="{:url('/index/index/'.$v['banner_url'])}" target="_blank" style="background-image:url('/uploads/{$v.banner_path}')"></a></div>
+    {/foreach}
+   </div>
+ <!-- 如果需要分页器 -->
+ <div class="swiper-pagination"></div>
+ 
+ <!-- 如果需要导航按钮 -->
+ <div class="swiper-button-prev"></div>
+ <div class="swiper-button-next"></div>
+</div>

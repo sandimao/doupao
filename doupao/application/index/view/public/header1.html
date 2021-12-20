@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="公司简介" />
+<meta name="description" content="DouPHP是一款轻量级企业网站管理系统，基于PHP+Mysql架构的，可运行在Linux、Windows、MacOSX、Solaris等各种平台上，系统搭载Smarty模板引擎，支持自定义伪静态，前台模板采用DIV+CSS设计，后台界面设计简洁明了，功能简单易具有良好的用户体验，稳定性好、扩展性及安全性强，可面向中小型站点提供网站建设解决方案。传统的企业网站管理系统是以技术人员的角度出发，设计了很多复杂的功能，并且操作流程上也很复杂，对于最终要操控这个系统的管理员来说并不是很人性化，DouPHP所做的只" />
+<meta name="generator" content="DouPHP v1.6" />
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="/static/home/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/static/home/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="/static/home/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/static/home/css/article_history.css" />
+</head>
+<body>
+  <header id="header">
+    <nav class="navbar navbar-expand-sm custom_nav">
+     <div class="container">
+      <div class="navbar-brand">
+       <a href="https://demo.douphp.com/" class="logo"><img src="images/logo.png" alt="DouPHP轻量级企业网站管理系统" /></a>
+      </div>
+      <div class="navbar-action d-md-none">
+           <button type="button" class="menu" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation"> <span class="fa fa-bars"></span> </button>
+      </div>
+      <div class="main-nav collapse navbar-collapse justify-content-md-end" id="main-nav">
+        <ul class="navbar-nav">
+          {foreach $nav as $v}
+             <li class="nav-item dropdown"> <a href="{:url('/index/index/'.$v['nav_url'])}" class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{$v.nav_name}</a>
+              {present name="$v['son']"}
+               <ul class="dropdown-menu" aria-labelledby="dropdown1">
+                 {foreach $v['son'] as $k}
+                 <li> 
+                   <a class="dropdown-item" href="{:url('/index/index/'.$k['nav_url'])}">{$k.nav_name}</a>
+                  </li>
+                  {/foreach}
+                </ul>
+               {/present}
+              </li>
+         {/foreach}
+                </ul>
+      </div>
+     </div>
+    </nav>
+   </header>
+   <div class="container mb">
+    <div class="row">
+     <div class="col-md-2"> 
+       <div class="tree-box">
+   <h3>公司信息</h3>
+   <ul>
+      <li><a href="{:url('/index/index/about')}">公司简介</a></li>
+      <li><a href="{:url('/index/index/history')}">发展历程</a></li>
+      <li><a href="{:url('/index/index/job')}">人才招聘</a></li>
+      <li><a href="{:url('/index/index/contact')}">联系我们</a></li>
+       </ul>
+  </div> 
+</div>

@@ -1,0 +1,71 @@
+<div class="online-service">
+    <div class="item">
+   <i class="item-icon weixin"></i>
+   <div class="pop-box">
+    <div class="item-box">
+     <div class="weixin-box"><img src="/static/home/images/weixin.png" /><p>微信二维码</p></div>
+    </div>
+   </div>
+  </div>
+   <div class="item">
+   <i class="item-icon tel"></i>
+   <div class="pop-box">
+    <div class="item-box">
+     <div class="tel-box">0596-8888888</div>
+    </div>
+   </div>
+  </div>
+  <p class="go-top"><a href="javascript:;" onfocus="this.blur();" class="go-btn"></a></p>
+ </div>
+<footer id="footer">
+    <div class="container">
+     <div class="row">
+            <div class="col-md-2">
+       <div class="foot-nav">
+        <div class="nav-parent">
+         <a href="{:url('/index/index/about')}">公司简介</a>
+        </div>
+        <div class="nav-child">
+               <a href="{:url('/index/index/honor')}">企业荣誉</a>
+               <a href="{:url('/index/index/history')}">发展历程</a>
+               <a href="{:url('/index/index/contact')}">联系我们</a>
+              </div>
+       </div>
+      </div>
+              {foreach $nav as $v}
+              {present name="$v['son']"}
+              <div class="col-md-2">
+                     <div class="foot-nav">
+                            <div class="nav-parent">
+                                   <a href="{:url('/index/index/'.$v['nav_url'])}">{$v.nav_name}</a>
+                            </div>
+                            <div class="nav-child">
+                                   {foreach $v['son'] as $k}
+                                   <a href="{:url('/index/index/'.$k['nav_url'])}">{$k.nav_name}</a>
+                                   {/foreach}
+                            </div>
+                     </div>
+              </div>
+              {/present}
+              {/foreach}
+        <div class="col-md-2">
+           <div class="weixin"><img src="/static/home/images/weixin.png" /><p>微信二维码</p></div>
+          </div>
+      <div class="col-md-2">
+       <div class="contact">
+        <div class="tel">0596-8888888</div>
+             <div class="email">your@domain.com</div>
+       </div>
+      </div>
+     </div>
+     <div class="copy-right">© DouPHP轻量级企业网站管理系统 2020 All Rights Reserved. <a href='#' target='_blank'>Powered by DouPHP</a> </div>
+     </div>
+   </footer>
+   </div>
+  <script type="text/javascript" src="/static/home/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/home/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/static/home/js/swiper.min.js"></script>
+  <script type="text/javascript" src="/static/home/js/slide_show.js"></script>
+  <script type="text/javascript" src="/static/home/js/dou.js"></script>
+  </body>
+  </html>

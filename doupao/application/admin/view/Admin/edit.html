@@ -1,0 +1,58 @@
+{include file="public/header" /}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">编辑管理员</h1>
+        </div>
+                <ul class="breadcrumb">
+            <li><a href="{:url('/index/index/index')}">Home</a> <span class="divider">/</span></li>
+            <li class="active">编辑管理员</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                    
+<div class="btn-toolbar">
+    <button class="btn btn-primary" onClick="location='{:url('/admin/admin/list')}'"><i class="icon-list"></i> 管理员列表</button>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+        <form action="/admin/admin/edit/cid/{$cate.admin_id}" method="post">
+			<input type="hidden" name="admin_id" value="{$cate.admin_id}" />
+            <label>管理员名称</label>
+            <input type="text" name="admin_name" value="{$cate.admin_name}" class="input-xxlarge">
+            <label>管理员密码</label>
+            <input type="password" name="admin_pwd" value="{$cate.admin_pwd}" class="input-xxlarge recycle">
+            <label></label>
+            <input class="btn btn-primary" type="submit" value="提交" />
+        </form>
+      </div>
+  </div>
+
+</div>
+
+
+                    
+                  
+                    
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="/static/admin/lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+            $('.recycle').focus(function(){$(this).val('');});
+        });
+    </script>
+    
+  </body>
+</html>
+
+

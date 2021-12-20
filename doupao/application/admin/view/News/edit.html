@@ -1,0 +1,77 @@
+{include file="public/header" /}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">编辑新闻</h1>
+        </div>
+                <ul class="breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li class="active">编辑新闻</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                    
+<div class="btn-toolbar">
+    <button class="btn btn-primary" onClick="location='{:url('/admin/news/list')}'"><i class="icon-list"></i> 新闻列表</button>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+        <form action="/admin/news/edit/cid/{$cate.art_id}" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="art_id" value="{$cate.art_id}" />
+            <label>新闻标题</label>
+            <input type="text" name="art_title" value="{$cate.art_title}" class="input-xxlarge">
+            <label>新闻点击率</label>
+            <input type="text" name="art_click" value="{$cate.art_click}" class="input-xxlarge">
+            <label>新闻详情</label>
+            <textarea name="art_content" class="input-xxlarge" cols="30" rows="10">{$cate.art_content}</textarea>
+            <label>新闻图片</label>
+            <img src="/uploads/{$cate.art_img}" alt="">
+            <input type="file" name="art_img" class="input-xxlarge">
+            <label>添加时间</label>
+            <input type="date" name="art_addtime" value="{$cate.art_addtime|date='Y-m-d'}" class="input-xxlarge">
+            <label>新闻排序</label>
+            <input type="text" name="art_ord" value="{$cate.art_ord}" class="input-xxlarge">
+            <label>是否上架</label>
+            <select name="is_show" >
+                <option value="1" {$cate.is_show==1?'selected':''}>是</option>
+                <option value="2" {$cate.is_show==2?'selected':''}>否</option>
+            </select>
+            <label>所属分类</label>
+            <select name="cat_id" >
+                {foreach $catart as $v}
+                <option value="{$v.cat_id}" {$v.cat_id==$cate.cat_id?'selected':''}>{$v.cat_name}</option>
+                {/foreach}
+            </select>
+            <label></label>
+            <input class="btn btn-primary" type="submit" value="提交" />
+        </form>
+      </div>
+  </div>
+
+</div>
+
+
+                    
+                  
+                    
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="/static/admin/lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+    </script>
+    
+  </body>
+</html>
+
+

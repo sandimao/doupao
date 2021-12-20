@@ -1,0 +1,128 @@
+{include file="public/header" /}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">新闻列表</h1>
+        </div>
+        <ul class="breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li class="active">List</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">        
+<div class="btn-toolbar">
+    <button class="btn btn-primary" onClick="location='{:url('/admin/news/add')}'"><i class="icon-plus"></i>添加新闻</button>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>新闻标题</th>
+          <th>点击率</th>
+          <th>新闻图片</th>
+          <th>新闻详情</th>
+          <th>添加时间</th>
+          <th>是否显示</th>
+          <th>所属分类</th>
+          <th style="width: 26px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+		{foreach $blog as $v}
+        <tr name="a_{$v.art_id}">
+          <td>{$a++}</td>
+          <td>{$v.art_title|str_cut=###,0,10}</td>
+          <td>{$v.art_click}</td>
+          <td><img src="/uploads/{$v.art_img}" alt="" style="width:100px;"></td>
+          <td style="width: 300px;">{$v.art_content|str_cut=###,0,50}</td>
+          <td>{$v.art_addtime|date="Y-m-d"}</td>
+          <td><img src="/static/admin/images/{$v.is_show==1?'yes.png':'no.png'}" alt=""></td>
+          <td>{$v.cat_name}</td>
+          <td>
+              <a href="{:url('/admin/news/edit/cid/'.$v['art_id'])}"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal" dataid="{$v.art_id}" class="del"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        {/foreach}
+      </tbody>
+    </table>
+</div>
+
+<div class="pagination">
+	{$blog|raw}
+</div>
+
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Delete Confirmation</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete the user?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="btn btn-danger" data-dismiss="modal" cid="">Delete</button>
+    </div>
+</div>           
+        </div>
+    </div>
+    </div>
+    <style type="text/css">
+		.tip{
+			position:absolute;
+			width:20%;
+			height:36px;
+			line-height:36px;
+			text-align:center;
+			font-size:20px;
+			color:#fff;
+			background-color:rgba(138,138,138,.5);
+			border-radius:5px;
+			left:50%;
+			top:200px;
+			transform:translateX(-50%);
+			display:none;
+		}
+	</style>
+	<div class="tip"></div>   
+    <script src="/static/admin/lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+		$('.del').click(function(){
+			var dataid=$(this).attr('dataid');
+			$('.btn-danger').attr('cid',dataid);
+		})
+		$('.btn-danger').click(function(){
+			var cid=$(this).attr('cid');
+			$(".table tr[name='a_"+cid+"']").remove();
+			$.ajax({
+				type:'get',
+				url:"{:url('/admin/news/del')}",
+				data:'cid='+cid,
+				dataType:'text',
+				success:function(z){
+					console.log(z);
+					if(z==1){
+						$('.tip').html('删除成功');
+						$('.tip').fadeIn(500);
+						function nn(){
+							$('.tip').fadeOut(500);
+						}
+						setTimeout(nn,2000);
+					}
+				}
+			})
+		})
+    </script>
+    
+  </body>
+</html>
+
+

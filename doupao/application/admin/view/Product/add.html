@@ -1,0 +1,75 @@
+{include file="public/header" /}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">添加产品</h1>
+        </div>
+                <ul class="breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li class="active">添加产品</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                    
+<div class="btn-toolbar">
+    <button class="btn btn-primary" onClick="location='{:url('/admin/product/list')}'"><i class="icon-list"></i>产品列表</button>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+        <form action="/admin/product/add" method="post" enctype="multipart/form-data">
+            <label>添加产品名称</label>
+            <input type="text" name="pro_name" value="" class="input-xxlarge">
+            <label>添加产品价格</label>
+            <input type="text" name="pro_price" value="" class="input-xxlarge">
+            <label>添加产品图片</label>
+            <input type="file" name="pro_img" value="" class="input-xxlarge">
+            <label>添加产品详情</label>
+            <textarea name="pro_text" class="input-xxlarge" cols="30" rows="10"></textarea>
+            <label>产品添加时间</label>
+            <input type="date" name="pro_addtime" value="" class="input-xxlarge">
+            <label>添加产品排序</label>
+            <input type="text" name="pro_ord" value="" class="input-xxlarge">
+            <label>是否上架</label>
+            <select name="is_show" >
+                <option value="">请选择</option>
+                <option value="1">是</option>
+                <option value="2">否</option>
+            </select>
+            <label>所属分类</label>
+            <select name="cat_id" >
+                <option value="">请选择</option>
+                {foreach $catpro as $v}
+                <option value="{$v.cat_id}">{$v.cat_name}</option>
+                {/foreach}
+            </select>
+            <label></label>
+            <input class="btn btn-primary" type="submit" value="提交" />
+        </form>
+      </div>
+  </div>
+
+</div>
+
+
+                   
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="/static/admin/lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+    </script>
+    
+  </body>
+</html>
+
+

@@ -1,0 +1,44 @@
+{include file="public/header2"}
+<div class="container mb">
+      <div class="row">
+            <div class="col-md-2">
+                  <div class="tree-box">
+                        <h3>产品分类</h3>
+                        <ul>
+                              {foreach $catpro as $v}
+                              <li><a href="{:url('/index/index/product/cid/'.$v['cat_id'])}">{$v.cat_name}</a></li>
+                             {/foreach}
+                        </ul>
+                  </div>
+            </div>
+            <div class="col-md-10">
+                  <div class="ur-here">
+                        当前位置：<a href="{:url('/index/index/product')}">首页</a><b>></b><a href="#">产品中心</a></div>
+                  <div id="product">
+                        <div class="product-img">
+                              <a href="" target="_blank"><img src="/uploads/{$pro.pro_img}" width="300" /></a>
+                        </div>
+                        <div class="product-info">
+                              <h1>{$pro.pro_name}</h1>
+                              <ul>
+                                    <li class="product-price">价格：<em class="price">￥{$pro.pro_price} 元</em></li>
+                              </ul>
+                              <div class="btn-ask">
+
+                              </div>
+
+                        </div>
+                        <div class="clear"></div>
+                        <div class="product-content">
+                              <h3>产品介绍</h3>
+                              <ul>
+                                    <p>
+                                    {$pro.pro_text}
+                                    </p>
+                              </ul>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>
+{include file="public/footer"}

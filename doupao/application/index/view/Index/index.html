@@ -1,0 +1,69 @@
+
+{include file="public/header" /}
+ <div id="index">
+  <div class="index-box">
+   <div class="container">
+    <div class="row about">
+ <div class="col-md-4">
+  <div class="img scale">
+      <img src="/static/home/images/about.jpg" />
+     </div>
+ </div>
+ <div class="col-md-8">
+  <h2>公司简介</h2>
+  <div class="desc">DouPHP是一款轻量级企业网站管理系统，基于PHP+Mysql架构的，可运行在Linux、Windows、MacOSX、Solaris等各种平台上，系统搭载Smarty模板引擎，支持自定义伪静态，前台模板采用DIV+CSS设计，后台界面设计简洁明了，功能简单易具有良好的用户体验，稳定性好、扩展性及安全性强，可面向中小型站点提供网站建设解决方案。传统的企业网站管理系统是以技术人员的角度出发，设计了很多复杂的功能，并且操作流程上也很...</div>
+  <div class="more"><a href="{:url('/index/index/about')}">查看详细</a></div>
+ </div>
+</div>   </div>
+  </div>
+    <div class="index-box bg">
+   <h3><b>产品展示</b><em>Recommend Product</em></h3>
+   <div class="product-list">
+ <div class="container">
+  <div class="row"> 
+    {foreach $pro as $v}
+      <div class="col-md-3 col-6">
+    <div class="item">
+     <div class="img scale"><a href="{:url('/index/index/product_detail/pid/'.$v['pro_id'])}"><img src="/uploads/{$v.pro_img}" /></a></div>
+     <div class="name"><a href="">{$v.pro_name}</a></div>
+     <div class="price">￥{$v.pro_price} 元</div>
+    </div>
+   </div>
+   {/foreach}
+    
+  </div>
+ </div>
+</div>   <div class="more"><a href="{:url('index/index/product')}">更多产品</a></div>
+  </div>
+      <div class="index-box">
+   <h3><b>新闻中心</b><em>Recommend News</em></h3>
+   <div class="article-list"> 
+ <div class="container">
+  <div class="row">
+   <div class="img-box col-md-5">
+            <dl class="img scale"><a href="{:url('/index/index/news_detail/nid/40')}"><img src="/static/home/images/10_1590637651640490.jpg" /></a>
+    </dl>
+    <dl class="item">
+     <dt><em>26</em><b>2013-06</b></dt>
+     <dd><a href="{:url('/index/index/news_detail/nid/40')}">如何添加自定义字段</a>
+      <p>以商品为例，如果要给商品加上自定义字段，首先找到系统设置-自定义然后填入如“颜色,尺寸,型号”中间以英文逗号隔开，然后在商品编...</p>
+     </dd>
+    </dl>
+                                           </div>
+   <div class="text-box col-md-7"> 
+     {foreach $news as $v}
+                    <dl class="item">
+     <dt><em>{$v.art_addtime|date="d"}</em><b>{$v.art_addtime|date="Y-m"}</b></dt>
+     <dd><a href="{:url('/index/index/news_detail/nid/'.$v['art_id'])}">{$v.art_title}</a>
+      <p>{$v.art_content|str_cut=###,0,100}</p>
+     </dd>
+    </dl>
+    {/foreach}    
+         
+   </div>
+  </div>
+ </div>
+</div>   <div class="more"><a href="{:url('/index/index/news')}">更多文章</a></div>
+  </div>
+     </div>
+{include file="public/footer" /}

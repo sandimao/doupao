@@ -1,0 +1,64 @@
+{include file="public/header" /}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">编辑广告</h1>
+        </div>
+                <ul class="breadcrumb">
+            <li><a href="{:url('/admin/index/index')}">Home</a> <span class="divider">/</span></li>
+            <li class="active">编辑广告</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                    
+<div class="btn-toolbar">
+    <button class="btn btn-primary" onClick="location='{:url('/admin/banner/list')}'"><i class="icon-list"></i> 广告列表</button>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+        <form action="/admin/banner/edit/cid/{$cate.banner_id}" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="banner_id" value="{$cate.banner_id}" />
+            <label>广告图片</label>
+            <img src="/uploads/{$cate.banner_path}" alt="" class="input-xxlarge">
+            <input type="file" name="banner_path"  class="input-xxlarge">
+            <label>广告标题</label>
+            <input type="text" name="banner_title" value="{$cate.banner_title}" class="input-xxlarge">
+            <label>广告链接</label>
+            <input type="text" name="banner_url" value="{$cate.banner_url}" class="input-xxlarge">
+            <label>广告排序</label>
+            <input type="text" name="banner_ord" value="{$cate.banner_ord}" class="input-xxlarge">
+            <label>添加时间</label>
+            <input type="date" name="banner_addtime" value="{$cate.banner_addtime|date='Y-m-d'}" class="input-xxlarge">
+            <label></label>
+            <input class="btn btn-primary" type="submit" value="提交" />
+        </form>
+      </div>
+  </div>
+
+</div>
+
+
+                    
+                  
+                    
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="/static/admin/lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+    </script>
+    
+  </body>
+</html>
+
+

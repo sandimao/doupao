@@ -1,0 +1,32 @@
+{include file="public/header2"}
+<div class="container mb">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="tree-box">
+        <h3>文章分类</h3>
+        <ul>
+          {foreach $catart as $v}
+          <li><a href="{:url('/index/index/news/cid/'.$v['cat_id'])}">{$v.cat_name}</a></li>
+         {/foreach}
+        </ul>
+
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="ur-here">
+        当前位置：<a href="{:url('/index/index/news')}">首页</a><b>></b><a href="https://demo.douphp.com/news">文章中心</a></div>
+      <div id="article">
+        <h1>{$new.art_title}</h1>
+        <div class="info">发布时间：{$new.art_addtime|date="Y-m-d"} &nbsp;&nbsp;&nbsp;&nbsp;点击数：{$new.art_click}
+        </div>
+        <div class="content">
+          <p>
+            {$new.art_content}
+            <br/><br />
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ {include file="public/footer"}

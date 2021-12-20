@@ -1,0 +1,54 @@
+{include file="public/header" /}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">添加产品分类</h1>
+        </div>
+                <ul class="breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li class="active">添加产品分类</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                    
+<div class="btn-toolbar">
+    <button class="btn btn-primary" onClick="location='{:url('/admin/catpro/list')}'"><i class="icon-list"></i> 产品分类列表</button>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+        <form action="/admin/catpro/add" method="post">
+            <label>产品分类名称</label>
+            <input type="text" name="cat_name" value="" class="input-xxlarge">
+            <label>产品分类排序</label>
+            <input type="text" name="cat_ord" value="" class="input-xxlarge">
+            <label></label>
+            <input class="btn btn-primary" type="submit" value="提交" />
+        </form>
+      </div>
+  </div>
+
+</div>
+
+
+                   
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script src="/static/admin/lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+    </script>
+    
+  </body>
+</html>
+
+
